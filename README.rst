@@ -17,7 +17,7 @@ Introduction
     :target: https://github.com/psf/black
     :alt: Code Style: Black
 
-displayio driver for GC9A01 TFT LCD displays
+displayio driver for ST7796 TFT LCD displays
 
 
 Dependencies
