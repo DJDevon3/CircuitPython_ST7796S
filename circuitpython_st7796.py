@@ -1,6 +1,8 @@
-# SPDX-FileCopyrightText: 2023 DJDevon3
+# SPDX-FileCopyrightText: 2023 DJDevon3 with OpenAI ChatGPT 3.5
 # SPDX-License-Identifier: MIT
 # Circuit Python Driver for ST7796S display
+# https://help.openai.com/en/articles/6825453-chatgpt-release-notes
+# https://chat.openai.com/share/22db9572-8ad6-4dfc-8b97-43f60afc2ef3
 
 import displayio
 
