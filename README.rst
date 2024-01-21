@@ -84,7 +84,7 @@ Usage Example
 	# Create Display Groups
 	text_group = displayio.Group()
 	text_group.append(hello_label)
-	display.show(text_group)
+	display.root_group = text_group
 	
 	while True:
 		hello_label.text = "HELLO WORLD!"
