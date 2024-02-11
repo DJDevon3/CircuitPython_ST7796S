@@ -29,7 +29,8 @@ _INIT_SEQUENCE = bytearray(
 
 # pylint: disable=too-few-public-methods
 class ST7796S(BusDisplay):
-    """ST7796S display driver
+    """
+    ST7796S display driver
 
     :param FourWire bus: bus that the display is connected to
     :param bool portrait: (Optional) Portrait or Landscape mode (default=False)

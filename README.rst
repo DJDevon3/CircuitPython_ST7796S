@@ -41,7 +41,7 @@ Usage Example
 	import displayio
 	import terminalio
 	from adafruit_display_text import label
-	from circuitpython_st7796S import ST7796S
+	from circuitpython_st7796s import ST7796S
 	
 	spi = board.SPI()
 	while not spi.try_lock():
@@ -84,7 +84,7 @@ Usage Example
 	# Create Display Groups
 	text_group = displayio.Group()
 	text_group.append(hello_label)
-	display.show(text_group)
+	display.root_group = text_group
 	
 	while True:
 		hello_label.text = "HELLO WORLD!"
