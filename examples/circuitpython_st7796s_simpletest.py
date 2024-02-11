@@ -8,22 +8,29 @@ import terminalio
 from adafruit_display_text import label
 from circuitpython_st7796s import ST7796S
 
+# Support both 8.x.x and 9.x.x. Change when 8.x.x is discontinued as a stable release.
+try:
+    from fourwire import FourWire
+except ImportError:
+    from displayio import FourWire
 spi = board.SPI()
-while not spi.try_lock():
-    pass
-spi.configure(baudrate=24000000)  # Configure SPI for 24MHz
-spi.unlock()
-tft_cs = board.D9
-tft_dc = board.D10
-tft_rst = board.D12
 
 # 4.0" ST7796S Display
+displayio.release_displays()
 DISPLAY_WIDTH = 480
 DISPLAY_HEIGHT = 320
+DISPLAY_ROTATION = 180
 
-displayio.release_displays()
-display_bus = displayio.FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
-display = ST7796S(display_bus, width=DISPLAY_WIDTH, height=DISPLAY_HEIGHT, rotation=270)
+tft_cs = board.D9
+tft_dc = board.D10
+tft_rst = board.D17
+ts_cs = board.D6
+
+spi = board.SPI()
+display_bus = FourWire(spi, command=tft_dc, chip_select=tft_cs, reset=tft_rst)
+display = ST7796S(
+    display_bus, width=DISPLAY_WIDTH, height=DISPLAY_HEIGHT, rotation=DISPLAY_ROTATION
+)
 
 # Quick Colors for Labels
 TEXT_BLACK = 0x000000
@@ -42,8 +49,8 @@ TEXT_YELLOW = 0xFFFF00
 # Label Customizations
 hello_label = label.Label(terminalio.FONT)
 hello_label.anchor_point = (0.5, 1.0)
-hello_label.anchored_position = (DISPLAY_WIDTH/2, DISPLAY_HEIGHT/2)
-hello_label.scale = (3)
+hello_label.anchored_position = (DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2)
+hello_label.scale = 3
 hello_label.color = TEXT_WHITE
 
 # Create Display Groups
